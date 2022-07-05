@@ -20,5 +20,5 @@ const Logo = styled.div`
     1.5px 4.5px 0 #212121, 0 4.5px 0.25px rgba(0, 0, 0, 0.1), 0 0 1.5px rgba(0, 0, 0, 0.1),
     0 1.5px 0.75px rgba(0, 0, 0, 0.3), 0 3px 1.5px rgba(0, 0, 0, 0.2), 0 4.5px 4.5px rgba(0, 0, 0, 0.25),
     0 6px 6px rgba(0, 0, 0, 0.2), 0 9px 9px rgba(0, 0, 0, 0.15);
-  margin-left: 20px;
+  margin-left: 100px;
 `;
