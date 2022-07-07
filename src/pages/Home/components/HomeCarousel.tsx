@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import dead from '../../../images/dead.jpg';
 import squat from '../../../images/squat.jpg';
 import ohp from '../../../images/ohp.jpg';
@@ -9,7 +9,7 @@ import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 const imgData = [
   {
     id: 1,
-    image: squat,
+    image: dead,
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const imgData = [
   },
   {
     id: 3,
-    image: dead,
+    image: squat,
   },
   {
     id: 4,
@@ -28,10 +28,26 @@ const imgData = [
 const HomeCarousel = () => {
   const [current, setCurrent] = useState(1);
 
+  const handleNextButton = () => {
+    if (current === 4) {
+      setCurrent(1);
+    } else {
+      setCurrent(current + 1);
+    }
+  };
+
+  const handlePrevButton = () => {
+    if (current === 1) {
+      setCurrent(4);
+    } else {
+      setCurrent(current - 1);
+    }
+  };
+
   return (
     <CarouselContainer>
       <CarouselArrowWrapper>
-        <CarouselButton>
+        <CarouselButton onClick={handlePrevButton}>
           <BiLeftArrow className="prev" />
         </CarouselButton>
         {imgData.map(
@@ -42,7 +58,7 @@ const HomeCarousel = () => {
               </CarouselItem>
             ),
         )}
-        <CarouselButton>
+        <CarouselButton onClick={handleNextButton}>
           <BiRightArrow className="next" />
         </CarouselButton>
       </CarouselArrowWrapper>
@@ -54,7 +70,6 @@ export default HomeCarousel;
 
 const CarouselContainer = styled.div`
   border: 1px solid;
-  height: 1000px;
   display: flex;
   justify-content: end;
   padding: 80px;
@@ -76,11 +91,13 @@ const CarouselArrowWrapper = styled.div`
   align-items: center;
   font-size: 50px;
   color: #333333;
-  border-radius: 10px;
+  /* border-radius: 30px; */
   img {
-    border-radius: 10px;
+    /* border-radius: 30px; */
     box-shadow: rgba(0, 0, 0, 0.3) 0px 40px 80px, rgba(0, 0, 0, 0.22) 0px 30px 24px;
   }
 `;
 
-const CarouselButton = styled.div``;
+const CarouselButton = styled.div`
+  margin: 0 10px 0 10px;
+`;
