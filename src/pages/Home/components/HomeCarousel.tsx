@@ -53,16 +53,14 @@ const HomeCarousel = () => {
         {imgData.map(
           (img) =>
             current === img.id && (
-              <>
-                <CarouselItem key={img.id}>
-                  <img src={img.image} alt="" width={700} height={500} />
-                  <DotWrapper>
-                    {[1, 2, 3, 4].map((el) => (
-                      <>{current === el ? <DotActive></DotActive> : <Dot></Dot>}</>
-                    ))}
-                  </DotWrapper>
-                </CarouselItem>
-              </>
+              <CarouselItem key={img.id}>
+                <img src={img.image} alt="" width={700} height={500} />
+                <DotWrapper>
+                  {[1, 2, 3, 4].map((el, i) => (
+                    <React.Fragment key={i}>{current === el ? <DotActive></DotActive> : <Dot></Dot>}</React.Fragment>
+                  ))}
+                </DotWrapper>
+              </CarouselItem>
             ),
         )}
         <CarouselButton onClick={handleNextButton}>
@@ -79,7 +77,7 @@ const CarouselContainer = styled.div`
   /* border: 1px solid; */
   display: flex;
   justify-content: end;
-  padding: 80px;
+  /* padding: 80px; */
 `;
 
 const CarouselItem = styled.div`
@@ -99,12 +97,23 @@ const CarouselArrowWrapper = styled.div`
   align-items: center;
   font-size: 50px;
   color: #333333;
+
   /* border-radius: 30px; */
   img {
     /* border-radius: 30px; */
     box-shadow: rgba(0, 0, 0, 0.3) 0px 40px 80px, rgba(0, 0, 0, 0.22) 0px 30px 24px;
     opacity: 0.9;
   }
+
+  /* .activeSlide {
+    opacity: 0;
+    transition-duration: 1s;
+  }
+  .slide {
+    opacity: 1;
+    transition-duration: 1s;
+    transform: scale(1.08);
+  } */
 `;
 
 const CarouselButton = styled.div`
