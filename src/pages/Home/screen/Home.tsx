@@ -5,7 +5,7 @@ import { HomeCarousel } from '../components';
 
 const HomeLayout = styled.div`
   width: 100vw;
-  background-color: #eaeaea;
+  background-color: #ffffff;
 `;
 
 const Home = () => {

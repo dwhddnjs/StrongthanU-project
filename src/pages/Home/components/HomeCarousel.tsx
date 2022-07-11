@@ -55,6 +55,11 @@ const HomeCarousel = () => {
             current === img.id && (
               <CarouselItem key={img.id}>
                 <img src={img.image} alt="" width={800} height={550} />
+                <DotWrapper>
+                  {[0, 1, 2, 3, 4].map((el) => (
+                    <Dot key={el}></Dot>
+                  ))}
+                </DotWrapper>
               </CarouselItem>
             ),
         )}
@@ -69,7 +74,7 @@ const HomeCarousel = () => {
 export default HomeCarousel;
 
 const CarouselContainer = styled.div`
-  border: 1px solid;
+  /* border: 1px solid; */
   display: flex;
   justify-content: end;
   padding: 80px;
@@ -83,6 +88,7 @@ const CarouselItem = styled.div`
   justify-content: space-between;
   font-size: 50px;
   color: #ffffff;
+  position: relative;
 `;
 
 const CarouselArrowWrapper = styled.div`
@@ -100,4 +106,24 @@ const CarouselArrowWrapper = styled.div`
 
 const CarouselButton = styled.div`
   margin: 0 10px 0 10px;
+`;
+
+const DotWrapper = styled.div`
+  position: absolute;
+  display: flex;
+  bottom: 20px;
+  left: 350px;
+  /* border: 1px solid; */
+`;
+
+const Dot = styled.div`
+  background-color: #ffffff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  z-index: 10000;
+  margin-right: 10px;
+  &:last-child {
+    margin-right: 0;
+  }
 `;
