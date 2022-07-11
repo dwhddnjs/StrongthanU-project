@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import dead from '../../../images/dead.jpg';
 import squat from '../../../images/squat.jpg';
 import ohp from '../../../images/ohp.jpg';
@@ -83,8 +83,8 @@ const CarouselContainer = styled.div`
 `;
 
 const CarouselItem = styled.div`
-  width: 800px;
-  height: 550px;
+  width: 700px;
+  height: 500px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -103,6 +103,7 @@ const CarouselArrowWrapper = styled.div`
   img {
     /* border-radius: 30px; */
     box-shadow: rgba(0, 0, 0, 0.3) 0px 40px 80px, rgba(0, 0, 0, 0.22) 0px 30px 24px;
+    opacity: 0.9;
   }
 `;
 
@@ -114,7 +115,7 @@ const DotWrapper = styled.div`
   position: absolute;
   display: flex;
   bottom: 20px;
-  left: 350px;
+  left: 310px;
   /* border: 1px solid; */
   z-index: 10000;
 `;
