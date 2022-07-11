@@ -53,14 +53,16 @@ const HomeCarousel = () => {
         {imgData.map(
           (img) =>
             current === img.id && (
-              <CarouselItem key={img.id}>
-                <img src={img.image} alt="" width={800} height={550} />
-                <DotWrapper>
-                  {[0, 1, 2, 3, 4].map((el) => (
-                    <Dot key={el}></Dot>
-                  ))}
-                </DotWrapper>
-              </CarouselItem>
+              <>
+                <CarouselItem key={img.id}>
+                  <img src={img.image} alt="" width={700} height={500} />
+                  <DotWrapper>
+                    {[1, 2, 3, 4].map((el) => (
+                      <>{current === el ? <DotActive></DotActive> : <Dot></Dot>}</>
+                    ))}
+                  </DotWrapper>
+                </CarouselItem>
+              </>
             ),
         )}
         <CarouselButton onClick={handleNextButton}>
@@ -114,6 +116,7 @@ const DotWrapper = styled.div`
   bottom: 20px;
   left: 350px;
   /* border: 1px solid; */
+  z-index: 10000;
 `;
 
 const Dot = styled.div`
@@ -123,6 +126,20 @@ const Dot = styled.div`
   height: 20px;
   z-index: 10000;
   margin-right: 10px;
+  &:last-child {
+    margin-right: 0;
+  }
+`;
+
+const DotActive = styled.div`
+  background-color: #333333;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  z-index: 10000;
+  border: 2px solid #ffffff;
+  margin-right: 10px;
+
   &:last-child {
     margin-right: 0;
   }
