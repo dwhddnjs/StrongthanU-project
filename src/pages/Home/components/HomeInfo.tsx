@@ -7,7 +7,7 @@ const HomeInfo = () => {
     <InfoContainer>
       <InfoTitle>
         당신의 강력함을
-        <br /> 측정 해보세요 .
+        <pre>측정 해보세요 .</pre>
       </InfoTitle>
       <InfoDesc>
         체중 및 3대중량을 입력시 본인의 3대중량 티어 및 체중대비 중량을 수치로 확인할 수 있습니다.
@@ -29,6 +29,9 @@ const InfoTitle = styled.div`
   font-weight: 800;
   line-height: 70px;
   margin-top: 80px;
+  pre {
+    font-size: 58px;
+  }
 `;
 const InfoDesc = styled.p`
   margin-top: 20px;
