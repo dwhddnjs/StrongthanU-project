@@ -1,20 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import HomeModal from './HomeModal';
 import HomeStartBtn from './HomeStartBtn';
 
 const HomeInfo = () => {
+  const [modal, setModal] = useState(false);
+
+  const handleOpenForm = () => {
+    setModal(true);
+  };
+
   return (
-    <InfoContainer>
-      <InfoTitle>
-        당신의 강력함을
-        <pre>측정 해보세요 .</pre>
-      </InfoTitle>
-      <InfoDesc>
-        체중 및 3대중량을 입력시 본인의 3대중량 티어 및 체중대비 중량을 수치로 확인할 수 있습니다.
-        <br /> 또한 본인의 기록을 체급별 랭킹에 등록이 가능하며 다양한 스트렝스 프로그램 정보를 확인해 보세요.
-      </InfoDesc>
-      <HomeStartBtn />
-    </InfoContainer>
+    <>
+      <InfoContainer>
+        <InfoTitle>
+          당신의 강력함을
+          <pre>측정 해보세요 .</pre>
+        </InfoTitle>
+        <InfoDesc>
+          체중 및 3대중량을 입력시 본인의 3대중량 티어 및 체중대비 중량을 수치로 확인할 수 있습니다.
+          <br /> 또한 본인의 기록을 체급별 랭킹에 등록이 가능하며 다양한 스트렝스 프로그램 정보를 확인해 보세요.
+        </InfoDesc>
+        <HomeStartBtn onOpenForm={handleOpenForm} />
+      </InfoContainer>
+      {modal && <HomeModal />}
+    </>
   );
 };
 
@@ -26,7 +36,7 @@ const InfoContainer = styled.div`
 `;
 const InfoTitle = styled.div`
   font-size: 64px;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 70px;
   margin-top: 80px;
   pre {

@@ -4,9 +4,9 @@ import styled from 'styled-components';
 const HeaderNav = () => {
   return (
     <NavContainer>
-      <NavItems>Home</NavItems>
       <NavItems>Tier</NavItems>
       <NavItems>Rank</NavItems>
+      <NavItems>Program</NavItems>
       <NavItems>Reference</NavItems>
     </NavContainer>
   );

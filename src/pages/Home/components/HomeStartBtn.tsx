@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 
-const HomeStartBtn = () => {
-  return <StartButton>Get Started</StartButton>;
+interface HomeStartBtnProps {
+  onOpenForm: () => void;
+}
+
+const HomeStartBtn: FC<HomeStartBtnProps> = ({ onOpenForm }) => {
+  const handleOpenForm = () => {
+    onOpenForm();
+  };
+
+  return <StartButton onClick={handleOpenForm}>Get Started</StartButton>;
 };
 
 export default HomeStartBtn;
