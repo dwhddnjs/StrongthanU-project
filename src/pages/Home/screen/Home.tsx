@@ -23,7 +23,6 @@ const HomeLayout = styled.div`
 `;
 
 const CarouselInfoWrapper = styled.div`
-  /* border: 1px solid; */
   display: flex;
   padding: 80px;
   justify-content: space-between;

@@ -74,7 +74,6 @@ const HomeCarousel = () => {
 export default HomeCarousel;
 
 const CarouselContainer = styled.div`
-  /* border: 1px solid; */
   display: flex;
   justify-content: end;
   /* padding: 80px; */

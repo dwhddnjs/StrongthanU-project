@@ -15,7 +15,6 @@ const HeaderNav = () => {
 export default HeaderNav;
 
 const NavContainer = styled.div`
-  /* border: 1px solid; */
   margin-right: 170px;
 `;
 

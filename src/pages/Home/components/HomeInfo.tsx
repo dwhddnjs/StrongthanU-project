@@ -31,7 +31,6 @@ const HomeInfo = () => {
 export default HomeInfo;
 
 const InfoContainer = styled.div`
-  /* border: 1px solid; */
   text-align: center;
 `;
 const InfoTitle = styled.div`

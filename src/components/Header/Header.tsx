@@ -15,7 +15,6 @@ const Header = () => {
 export default Header;
 
 const HeaderContainer = styled.div`
-  /* border: 1px solid; */
   margin-bottom: 50px;
   height: 80px;
   display: flex;
