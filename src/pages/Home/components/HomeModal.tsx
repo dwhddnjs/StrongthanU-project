@@ -29,10 +29,23 @@ const HomeModal = () => {
 export default HomeModal;
 
 const ModalContainer = styled.div`
-  z-index: 100000;
+  z-index: 10000;
+  border: 1px solid;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #000000;
+  opacity: 0.2;
 `;
 
-const ModalForm = styled.div``;
+const ModalForm = styled.div`
+  border: 1px solid red;
+  width: fit-content;
+  background-color: #ffffff;
+  opacity: 1;
+`;
 
 const TitleInputWrapper = styled.div``;
 

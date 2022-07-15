@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components';
-import HomeModal from './HomeModal';
+
 import HomeStartBtn from './HomeStartBtn';
 
-const HomeInfo = () => {
-  const [modal, setModal] = useState(false);
+interface HomeInfoProps {
+  onOpenForm: () => void;
+}
 
-  const handleOpenForm = () => {
-    setModal(true);
-  };
-
+const HomeInfo: FC<HomeInfoProps> = ({ onOpenForm }) => {
   return (
     <>
       <InfoContainer>
@@ -21,9 +19,8 @@ const HomeInfo = () => {
           체중 및 3대중량을 입력시 본인의 3대중량 티어 및 체중대비 중량을 수치로 확인할 수 있습니다.
           <br /> 또한 본인의 기록을 체급별 랭킹에 등록이 가능하며 다양한 스트렝스 프로그램 정보를 확인해 보세요.
         </InfoDesc>
-        <HomeStartBtn onOpenForm={handleOpenForm} />
+        <HomeStartBtn onOpenForm={onOpenForm} />
       </InfoContainer>
-      {modal && <HomeModal />}
     </>
   );
 };
@@ -32,6 +29,7 @@ export default HomeInfo;
 
 const InfoContainer = styled.div`
   text-align: center;
+  border: 1px solid;
 `;
 const InfoTitle = styled.div`
   font-size: 64px;
