@@ -11,6 +11,10 @@ const Home = () => {
     setIsOpen(true);
   };
 
+  const handleCloseForm = () => {
+    setIsOpen(false);
+  };
+
   return (
     <HomeLayout>
       <Header />
@@ -18,7 +22,7 @@ const Home = () => {
         <HomeInfo onOpenForm={handleOpenForm} />
         <HomeCarousel />
       </CarouselInfoWrapper>
-      {isOpen && <HomeModal />}
+      {isOpen && <HomeModal onCloseForm={handleCloseForm} />}
     </HomeLayout>
   );
 };
