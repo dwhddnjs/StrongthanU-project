@@ -32,7 +32,6 @@ export default Home;
 const HomeLayout = styled.div`
   width: 100vw;
   background-color: #ffffff;
-  border: 1px solid;
   position: relative;
 `;
 

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 
 import HomeStartBtn from './HomeStartBtn';
@@ -29,7 +29,6 @@ export default HomeInfo;
 
 const InfoContainer = styled.div`
   text-align: center;
-  border: 1px solid;
 `;
 const InfoTitle = styled.div`
   font-size: 64px;

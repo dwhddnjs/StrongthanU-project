@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home/screen/Home';
+import { Home } from './pages/Home/screen';
+import { Tier } from './pages/Tier/screen';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { theme } from './theme';
 import { reset } from 'styled-reset';
@@ -30,6 +31,7 @@ function App() {
         <GlobalStyle />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/tier" element={<Tier />} />
         </Routes>
       </ThemeProvider>
     </>

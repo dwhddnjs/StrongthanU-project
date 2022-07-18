@@ -1,13 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const HeaderNav = () => {
   return (
     <NavContainer>
-      <NavItems>Tier</NavItems>
-      <NavItems>Rank</NavItems>
-      <NavItems>Program</NavItems>
-      <NavItems>Reference</NavItems>
+      <NavItems>
+        <Link to="/tier">Tier</Link>
+      </NavItems>
+      <NavItems>
+        <Link to="/rank">Rank</Link>
+      </NavItems>
+      <NavItems>
+        <Link to="/program">Program</Link>
+      </NavItems>
+      <NavItems>
+        <Link to="/reference">Reference</Link>
+      </NavItems>
     </NavContainer>
   );
 };
