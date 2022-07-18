@@ -4,24 +4,27 @@ import styled from 'styled-components';
 const HomeModal = () => {
   return (
     <ModalContainer>
-      <ModalForm>
-        <TitleInputWrapper>
-          <ModalTitle>스쿼트</ModalTitle>
-          <ModalInput />
-        </TitleInputWrapper>
-        <TitleInputWrapper>
-          <ModalTitle>벤치</ModalTitle>
-          <ModalInput />
-        </TitleInputWrapper>
-        <TitleInputWrapper>
-          <ModalTitle>데드</ModalTitle>
-          <ModalInput></ModalInput>
-        </TitleInputWrapper>
-        <TitleInputWrapper>
-          <ModalTitle>체중</ModalTitle>
-          <ModalInput></ModalInput>
-        </TitleInputWrapper>
-      </ModalForm>
+      <ModalLayout>
+        <ModalForm>
+          <ModalDesc>체중 및 3대중량을 입력해주세요</ModalDesc>
+          <TitleInputWrapper>
+            <ModalTitle>Body Weight</ModalTitle>
+            <ModalInput />
+          </TitleInputWrapper>
+          <TitleInputWrapper>
+            <ModalTitle>Squat</ModalTitle>
+            <ModalInput />
+          </TitleInputWrapper>
+          <TitleInputWrapper>
+            <ModalTitle>BenchPress</ModalTitle>
+            <ModalInput />
+          </TitleInputWrapper>
+          <TitleInputWrapper>
+            <ModalTitle>DeadLift</ModalTitle>
+            <ModalInput />
+          </TitleInputWrapper>
+        </ModalForm>
+      </ModalLayout>
     </ModalContainer>
   );
 };
@@ -36,18 +39,38 @@ const ModalContainer = styled.div`
   height: 100%;
   top: 0;
   left: 0;
-  background-color: #000000;
-  opacity: 0.2;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ModalLayout = styled.div`
+  border: 1px solid red;
+  background-color: #ffffff;
+  color: #333333;
 `;
 
 const ModalForm = styled.div`
-  border: 1px solid red;
-  width: fit-content;
-  background-color: #ffffff;
-  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  height: 100%;
 `;
 
-const TitleInputWrapper = styled.div``;
+const ModalDesc = styled.span`
+  border-bottom: 1px solid #000000;
+  font-size: 24px;
+`;
+
+const TitleInputWrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+`;
 
 const ModalTitle = styled.span``;
 
