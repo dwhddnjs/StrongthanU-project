@@ -35,6 +35,7 @@ const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
             <ModalTitle>DeadLift</ModalTitle>
             <ModalInput />
           </TitleInputWrapper>
+          <ModalMeasureBtn>측정하기</ModalMeasureBtn>
         </ModalForm>
       </ModalLayout>
     </ModalContainer>
@@ -109,4 +110,17 @@ const ModalCloseBtn = styled.div`
   /* border: 1px solid; */
   color: #333333;
   padding: 3px;
+`;
+
+const ModalMeasureBtn = styled.button`
+  width: 150px;
+  height: 50px;
+  margin-top: 30px;
+  border-radius: 15px;
+  border: 1px solid #c4c4c4;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #3eb489;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 `;
