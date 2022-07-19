@@ -2,6 +2,7 @@ import React from 'react';
 import { Header } from '../../../components/Header';
 import styled from 'styled-components';
 import b from '../../../images/b.png';
+import { TierTable } from '../components';
 
 const Tier = () => {
   return (
@@ -19,6 +20,7 @@ const Tier = () => {
             asperiores, voluptate nisi est saepe autem impedit, rem ipsa! Delectus excepturi architecto nemo hic minus
             sit exercitationem.
           </TierDesc>
+          <TierTable />
         </TitleDescWrapper>
         <TierImg>
           <img src={b} alt="" width={500} />
@@ -35,9 +37,10 @@ const TierContainer = styled.div`
   flex-direction: column;
 `;
 const TierTitle = styled.span`
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 800;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  padding: 3px 5px 3px 5px;
 `;
 
 const TitleDescWrapper = styled.div`
@@ -46,6 +49,7 @@ const TitleDescWrapper = styled.div`
   flex-direction: column;
   margin-right: 150px;
   padding: 20px;
+  margin-top: 10px;
 `;
 
 const ImgDescWrapper = styled.div`
@@ -56,6 +60,6 @@ const ImgDescWrapper = styled.div`
 `;
 const TierImg = styled.div``;
 const TierDesc = styled.p`
-  width: 600px;
+  width: 460px;
   /* border: 1px solid; */
 `;
