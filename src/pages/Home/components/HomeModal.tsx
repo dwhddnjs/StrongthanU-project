@@ -1,9 +1,7 @@
 import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
-import { getMultiple } from '../../../util/getMultiple';
 import { useNavigate } from 'react-router';
-import { useEffect } from 'react';
 
 interface HomeModalProps {
   onCloseForm: () => void;
@@ -30,7 +28,7 @@ const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
     });
   };
 
-  const handleOnSubmit = (e: any) => {
+  const handleOnSubmit = () => {
     localStorage.setItem('data', JSON.stringify(data));
     navigate('/tier');
   };
