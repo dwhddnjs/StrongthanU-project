@@ -1,14 +1,50 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
+import { getMultiple } from '../../../util/getMultiple';
+import { useNavigate } from 'react-router';
 
 interface HomeModalProps {
   onCloseForm: () => void;
 }
 
 const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
+  const navigate = useNavigate();
+  const [data, setData] = useState({
+    body: '',
+    squat: '',
+    bench: '',
+    dead: '',
+    multiple: {
+      s: 0,
+      b: 0,
+      d: 0,
+    },
+  });
+
   const handleCloseForm = () => {
     onCloseForm();
+  };
+
+  const handleOnChange = (e: any) => {
+    const { name, value } = e.target;
+    setData({
+      ...data,
+      [name]: value,
+    });
+  };
+
+  const handleOnSubmit = () => {
+    setData({
+      ...data,
+      multiple: {
+        s: getMultiple(parseInt(data.squat), parseInt(data.body)),
+        b: getMultiple(parseInt(data.bench), parseInt(data.body)),
+        d: getMultiple(parseInt(data.dead), parseInt(data.body)),
+      },
+    });
+    localStorage.setItem('data', JSON.stringify(data));
+    navigate('/tier');
   };
 
   return (
@@ -21,21 +57,21 @@ const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
           <ModalDesc>무게를 kg 단위로 입력해주세요.</ModalDesc>
           <TitleInputWrapper>
             <ModalTitle>Body Weight</ModalTitle>
-            <ModalInput />
+            <ModalInput onChange={handleOnChange} value={data.body} name="body" />
           </TitleInputWrapper>
           <TitleInputWrapper>
             <ModalTitle>Squat</ModalTitle>
-            <ModalInput />
+            <ModalInput onChange={handleOnChange} value={data.squat} name="squat" />
           </TitleInputWrapper>
           <TitleInputWrapper>
             <ModalTitle>BenchPress</ModalTitle>
-            <ModalInput />
+            <ModalInput onChange={handleOnChange} value={data.bench} name="bench" />
           </TitleInputWrapper>
           <TitleInputWrapper>
             <ModalTitle>DeadLift</ModalTitle>
-            <ModalInput />
+            <ModalInput onChange={handleOnChange} value={data.dead} name="dead" />
           </TitleInputWrapper>
-          <ModalMeasureBtn>측정하기</ModalMeasureBtn>
+          <ModalMeasureBtn onClick={handleOnSubmit}>측정하기</ModalMeasureBtn>
         </ModalForm>
       </ModalLayout>
     </ModalContainer>

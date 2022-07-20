@@ -2,26 +2,28 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TierTable = () => {
+  const data = JSON.parse(localStorage.getItem('data') as string);
+
   return (
     <TableContainer>
       <TableBody>
         <TableRow>스쿼트</TableRow>
-        <TableColumn>210kg</TableColumn>
-        <TableColumn>2.5배</TableColumn>
+        <TableColumn>{data.squat}kg</TableColumn>
+        <TableColumn>{data.multiple.s}배</TableColumn>
         <TableTotal />
       </TableBody>
       <TableBody>
         <TableRow>벤치프레스</TableRow>
-        <TableColumn>140kg</TableColumn>
-        <TableColumn>1.5배</TableColumn>
+        <TableColumn>{data.bench}kg</TableColumn>
+        <TableColumn>{data.multiple.b}배</TableColumn>
         <TableTotal />
       </TableBody>
       <TableBody>
         <TableRow>데드리프트</TableRow>
-        <TableColumn>250kg</TableColumn>
-        <TableColumn>3배</TableColumn>
+        <TableColumn>{data.dead}kg</TableColumn>
+        <TableColumn>{data.multiple.d}배</TableColumn>
         <TableTotal>
-          Total : <span>7배</span>
+          Total : <span>{data.multiple.s + data.multiple.b + data.multiple.d}배</span>
         </TableTotal>
       </TableBody>
     </TableContainer>
