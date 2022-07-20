@@ -1,29 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
+import { getMultiple } from '../../../util/getMultiple';
 
 const TierTable = () => {
   const data = JSON.parse(localStorage.getItem('data') as string);
+  const totalWeight = parseInt(data.squat) + parseInt(data.bench) + parseInt(data.dead);
 
   return (
     <TableContainer>
       <TableBody>
         <TableRow>스쿼트</TableRow>
         <TableColumn>{data.squat}kg</TableColumn>
-        <TableColumn>{data.multiple.s}배</TableColumn>
+        <TableColumn>{getMultiple(data.squat, data.body)}배</TableColumn>
         <TableTotal />
       </TableBody>
       <TableBody>
         <TableRow>벤치프레스</TableRow>
         <TableColumn>{data.bench}kg</TableColumn>
-        <TableColumn>{data.multiple.b}배</TableColumn>
+        <TableColumn>{getMultiple(data.bench, data.body)}배</TableColumn>
         <TableTotal />
       </TableBody>
       <TableBody>
         <TableRow>데드리프트</TableRow>
         <TableColumn>{data.dead}kg</TableColumn>
-        <TableColumn>{data.multiple.d}배</TableColumn>
+        <TableColumn>{getMultiple(data.dead, data.body)}배</TableColumn>
         <TableTotal>
-          Total : <span>{data.multiple.s + data.multiple.b + data.multiple.d}배</span>
+          Total : <span>{getMultiple(totalWeight, data.body)}배</span>
         </TableTotal>
       </TableBody>
     </TableContainer>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import { getMultiple } from '../../../util/getMultiple';
 import { useNavigate } from 'react-router';
+import { useEffect } from 'react';
 
 interface HomeModalProps {
   onCloseForm: () => void;
@@ -15,11 +16,6 @@ const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
     squat: '',
     bench: '',
     dead: '',
-    multiple: {
-      s: 0,
-      b: 0,
-      d: 0,
-    },
   });
 
   const handleCloseForm = () => {
@@ -34,15 +30,7 @@ const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
     });
   };
 
-  const handleOnSubmit = () => {
-    setData({
-      ...data,
-      multiple: {
-        s: getMultiple(parseInt(data.squat), parseInt(data.body)),
-        b: getMultiple(parseInt(data.bench), parseInt(data.body)),
-        d: getMultiple(parseInt(data.dead), parseInt(data.body)),
-      },
-    });
+  const handleOnSubmit = (e: any) => {
     localStorage.setItem('data', JSON.stringify(data));
     navigate('/tier');
   };

@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom';
 const HeaderNav = () => {
   return (
     <NavContainer>
-      <NavItems>
-        <Link to="/tier">Tier</Link>
-      </NavItems>
+      <NavItems>{localStorage.getItem('data') !== null ? <Link to="/tier">Tier</Link> : <span>Tier</span>}</NavItems>
       <NavItems>
         <Link to="/rank">Rank</Link>
       </NavItems>
