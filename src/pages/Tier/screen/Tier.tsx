@@ -1,8 +1,7 @@
 import React from 'react';
 import { Header } from '../../../components/Header';
 import styled from 'styled-components';
-import b from '../../../images/b.png';
-import { TierTable } from '../components';
+import { TierTable, TierImg } from '../components';
 
 const Tier = () => {
   return (
@@ -22,9 +21,7 @@ const Tier = () => {
           </TierDesc>
           <TierTable />
         </TitleDescWrapper>
-        <TierImg>
-          <img src={b} alt="" width={500} />
-        </TierImg>
+        <TierImg />
       </ImgDescWrapper>
     </TierContainer>
   );
@@ -58,7 +55,7 @@ const ImgDescWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
-const TierImg = styled.div``;
+
 const TierDesc = styled.p`
   width: 460px;
   /* border: 1px solid; */
