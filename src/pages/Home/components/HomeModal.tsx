@@ -29,6 +29,10 @@ const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
   };
 
   const handleOnSubmit = () => {
+    if (data.body.length === 0 || data.squat.length === 0 || data.bench.length === 0 || data.dead.length === 0) {
+      alert('양식의 맞게 작성해주세요.');
+      return;
+    }
     localStorage.setItem('data', JSON.stringify(data));
     navigate('/tier');
   };
@@ -96,10 +100,11 @@ const ModalForm = styled.div`
 
 const ModalDesc = styled.span`
   font-size: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
   font-weight: 800;
   padding: 0 10px 5px 10px;
   color: #3eb489;
+  margin-top: 10px;
 `;
 
 const TitleInputWrapper = styled.div`

@@ -35,7 +35,7 @@ const TierDescContainer = styled.div`
   flex-direction: column;
   margin-right: 150px;
   padding: 20px;
-  margin-top: 10px;
+  margin-top: 40px;
 `;
 
 const TierInfo = styled.p`
