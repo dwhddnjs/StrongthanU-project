@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import b from '../../../images/b.png';
 
-const TierImg = () => {
+interface TierImgTypes {
+  currentTierImg: string;
+}
+
+const TierImg: FC<TierImgTypes> = ({ currentTierImg }) => {
   return (
     <TierImgContainer>
-      <img src={b} alt="" width={500} />
+      <img src={currentTierImg} alt="" width={500} />
     </TierImgContainer>
   );
 };

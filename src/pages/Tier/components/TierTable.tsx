@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { getMultiple } from '../../../util/getMultiple';
+import { getMultiple } from '../../../util';
 
 const TierTable = () => {
   const data = JSON.parse(localStorage.getItem('data') as string);
