@@ -9,10 +9,8 @@ const getTierInfo = (tierData: any, multiple: number) => {
     return tierData[3];
   } else if (multiple < 3) {
     return tierData[4];
-  } else if (multiple < 3.5) {
-    return tierData[5];
   } else {
-    return tierData[6];
+    return tierData[5];
   }
 };
 
