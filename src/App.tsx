@@ -5,6 +5,7 @@ import { Tier } from './pages/Tier/screen';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { theme } from './theme';
 import { reset } from 'styled-reset';
+import { Reference } from './pages/Reference/screen';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -32,6 +33,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tier" element={<Tier />} />
+          <Route path="/reference" element={<Reference />} />
         </Routes>
       </ThemeProvider>
     </>
