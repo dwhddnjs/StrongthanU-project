@@ -6,6 +6,7 @@ const RankHeader = () => {
     <RankHeaderContainer>
       <RankList>
         <RankListItem>Rank</RankListItem>
+        <RankListItem>NickName</RankListItem>
         <RankListItem>Tier</RankListItem>
         <RankListItem>Squat</RankListItem>
         <RankListItem>BenchPress</RankListItem>
@@ -27,7 +28,7 @@ const RankList = styled.div`
   border: 1px solid;
   justify-content: space-between;
   margin: 0 100px 0 100px;
-  padding: 8px 90px 8px 90px;
+  padding: 8px 80px 8px 80px;
   background-color: #009dd8;
   color: #ffffff;
   font-weight: 700;

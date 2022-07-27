@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Header } from '../../../components/Header';
-import { RankHeader, RankTab } from '../components';
+import { RankHeader, RankList, RankTab } from '../components';
 
 const rankData = [
   {
@@ -10,29 +10,41 @@ const rankData = [
       {
         id: 1,
         tier: '다이아',
+        nickname: '이종원',
         body: 70,
         squat: 160,
         bench: 115,
         dead: 195,
-        totalMultiple: 8,
+        total: {
+          weight: 500,
+          multiple: 8,
+        },
       },
       {
         id: 2,
         tier: '골드',
+        nickname: '이종투',
         body: 60,
         squat: 170,
         bench: 125,
         dead: 115,
-        totalMultiple: 8,
+        total: {
+          weight: 500,
+          multiple: 8,
+        },
       },
       {
         id: 3,
         tier: '플레티넘',
+        nickname: '이종삼',
         body: 80,
         squat: 120,
         bench: 105,
         dead: 205,
-        totalMultiple: 8,
+        total: {
+          weight: 500,
+          multiple: 8,
+        },
       },
     ],
   },
@@ -42,29 +54,41 @@ const rankData = [
       {
         id: 1,
         tier: '다이아',
+        nickname: '이이구',
         body: 40,
         squat: 100,
         bench: 35,
         dead: 115,
-        totalMultiple: 8,
+        total: {
+          weight: 500,
+          multiple: 8,
+        },
       },
       {
         id: 2,
         tier: '챌린저',
+        nickname: '팔감아',
         body: 50,
         squat: 110,
         bench: 45,
         dead: 135,
-        totalMultiple: 8,
+        total: {
+          weight: 500,
+          multiple: 8,
+        },
       },
       {
         id: 3,
         tier: '골드',
+        nickname: '치키넝',
         body: 45,
         squat: 100,
         bench: 55,
         dead: 135,
-        totalMultiple: 8,
+        total: {
+          weight: 500,
+          multiple: 8,
+        },
       },
     ],
   },
@@ -94,12 +118,7 @@ const Rank = () => {
               <>
                 {data.rankers.map((ranker) => (
                   <>
-                    <span>{ranker.tier}</span>
-                    <span>{ranker.body}</span>
-                    <span>{ranker.squat}</span>
-                    <span>{ranker.bench}</span>
-                    <span>{ranker.dead}</span>
-                    <span>{ranker.dead}배</span>
+                    <RankList ranker={ranker} />
                   </>
                 ))}
               </>
