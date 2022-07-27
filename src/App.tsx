@@ -6,6 +6,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { theme } from './theme';
 import { reset } from 'styled-reset';
 import { Reference } from './pages/Reference/screen';
+import { Rank } from './pages/Rank/screen';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -34,6 +35,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/tier" element={<Tier />} />
           <Route path="/reference" element={<Reference />} />
+          <Route path="/rank" element={<Rank />} />
         </Routes>
       </ThemeProvider>
     </>
