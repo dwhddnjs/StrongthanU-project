@@ -14,16 +14,20 @@ interface RankListTypes {
 const RankList: FC<RankListTypes> = ({ ranker }) => {
   return (
     <RankItemContainer>
-      <span>{ranker.tier}</span>
-      <span>{ranker.body}</span>
-      <span>{ranker.squat}</span>
-      <span>{ranker.bench}</span>
-      <span>{ranker.dead}</span>
-      <span>{ranker.dead}배</span>
+      <RankListItem>{ranker.tier}</RankListItem>
+      <RankListItem>{ranker.body}</RankListItem>
+      <RankListItem>{ranker.squat}</RankListItem>
+      <RankListItem>{ranker.bench}</RankListItem>
+      <RankListItem>{ranker.dead}</RankListItem>
+      <RankListItem>{ranker.dead}배</RankListItem>
     </RankItemContainer>
   );
 };
 
 export default RankList;
 
-const RankItemContainer = styled.div``;
+const RankItemContainer = styled.div`
+  display: flex;
+`;
+
+const RankListItem = styled.span``;
