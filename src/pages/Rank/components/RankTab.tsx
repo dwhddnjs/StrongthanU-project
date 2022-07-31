@@ -44,5 +44,5 @@ const RankTabBtn = styled.span`
 
 const RankBtnWrapper = styled.div`
   width: fit-content;
-  margin-right: 150px;
+  margin-right: 100px;
 `;

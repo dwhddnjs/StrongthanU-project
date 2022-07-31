@@ -9,7 +9,7 @@ const RankHeader = () => {
         <RankListItem>NickName</RankListItem>
         <RankListItem>Tier</RankListItem>
         <RankListItem>Squat</RankListItem>
-        <RankListItem>BenchPress</RankListItem>
+        <RankListItem>Bench</RankListItem>
         <RankListItem>DeadLift</RankListItem>
         <RankListItem>Total</RankListItem>
       </RankList>

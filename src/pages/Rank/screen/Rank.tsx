@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Header } from '../../../components/Header';
 import { RankHeader, RankList, RankTab } from '../components';
+import b from '../../../images/b.png';
+import s from '../../../images/s.png';
+import g from '../../../images/g.png';
+import p from '../../../images/p.png';
+import d from '../../../images/d.png';
+import c from '../../../images/c.png';
 
 const rankData = [
   {
@@ -9,7 +15,7 @@ const rankData = [
     rankers: [
       {
         id: 1,
-        tier: '다이아',
+        tier: d,
         nickname: '이종원',
         body: 70,
         squat: 160,
@@ -22,7 +28,7 @@ const rankData = [
       },
       {
         id: 2,
-        tier: '골드',
+        tier: g,
         nickname: '이종투',
         body: 60,
         squat: 170,
@@ -35,7 +41,7 @@ const rankData = [
       },
       {
         id: 3,
-        tier: '플레티넘',
+        tier: p,
         nickname: '이종삼',
         body: 80,
         squat: 120,
@@ -53,7 +59,7 @@ const rankData = [
     rankers: [
       {
         id: 1,
-        tier: '다이아',
+        tier: d,
         nickname: '이이구',
         body: 40,
         squat: 100,
@@ -66,7 +72,7 @@ const rankData = [
       },
       {
         id: 2,
-        tier: '챌린저',
+        tier: c,
         nickname: '팔감아',
         body: 50,
         squat: 110,
@@ -79,7 +85,7 @@ const rankData = [
       },
       {
         id: 3,
-        tier: '골드',
+        tier: g,
         nickname: '치키넝',
         body: 45,
         squat: 100,
