@@ -53,9 +53,9 @@ const RankListItem = styled.div`
   align-items: center;
   /* border: 1px solid; */
 
-  &:nth-child(4) {
+  &:nth-child(3) {
     /* border: 1px solid; */
     /* margin-left: 20px; */
-    padding-left: 25px;
+    padding-left: 20px;
   }
 `;
