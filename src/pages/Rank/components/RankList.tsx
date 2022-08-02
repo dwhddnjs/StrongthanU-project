@@ -1,6 +1,11 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
+type totalType = {
+  weight: number;
+  multiple: number;
+};
+
 interface RankListTypes {
   ranker: {
     id: number;
@@ -10,7 +15,7 @@ interface RankListTypes {
     squat: number;
     bench: number;
     dead: number;
-    total: any;
+    total: totalType;
   };
 }
 
