@@ -2,18 +2,17 @@ import { gql } from 'apollo-server';
 
 const typeDefs = gql`
   type Ranker {
-    tier: String!
     nickname: String!
-    gender: String!
     body: Int!
     squat: Int!
     bench: Int!
     dead: Int!
+    gender: String
   }
 
   input RankerInput {
-    nickname: String!
     gender: String!
+    nickname: String!
     body: Int!
     squat: Int!
     bench: Int!
@@ -22,6 +21,7 @@ const typeDefs = gql`
 
   type Query {
     allRankers: [Ranker!]!
+    filterGenderRankers(gender: String): [Ranker!]!
   }
 
   type Mutation {

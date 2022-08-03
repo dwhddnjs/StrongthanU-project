@@ -6,7 +6,6 @@ const { model, Schema } = pkg;
 // const Schema = mongoose.Schema;
 
 const rankerSchema = new Schema({
-  tier: String,
   nickname: String,
   gender: String,
   body: Number,

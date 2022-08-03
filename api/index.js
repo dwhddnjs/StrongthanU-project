@@ -10,6 +10,9 @@ const MONGODB = process.env.DB_URL;
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  cors: {
+    origin: '*',
+  },
 });
 
 mongoose

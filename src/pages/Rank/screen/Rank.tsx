@@ -2,12 +2,26 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Header } from '../../../components/Header';
 import { RankHeader, RankList, RankTab } from '../components';
+import { useQuery, gql } from '@apollo/client';
 import b from '../../../images/b.png';
 import s from '../../../images/s.png';
 import g from '../../../images/g.png';
 import p from '../../../images/p.png';
 import d from '../../../images/d.png';
 import c from '../../../images/c.png';
+
+const RANkERS = gql`
+  query {
+    allRankers {
+      nickname
+      gender
+      body
+      squat
+      bench
+      dead
+    }
+  }
+`;
 
 const rankData = [
   {
@@ -101,6 +115,9 @@ const rankData = [
 ];
 
 const Rank = () => {
+  const { data, loading, error } = useQuery(RANkERS);
+  console.log('data: ', data);
+
   const [gender, setGender] = useState('man' || 'woman');
 
   const handleGenderTab = (data: string) => {

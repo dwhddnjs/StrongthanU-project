@@ -1,4 +1,3 @@
-import { create } from 'domain';
 import Ranker from '../models/ranker';
 
 const resolver = {
@@ -6,7 +5,11 @@ const resolver = {
     async allRankers() {
       return await Ranker.find();
     },
+    async filterGenderRankers(_, { gender }) {
+      return await (await Ranker.find()).filter((el) => el.gender === gender);
+    },
   },
+
   Mutation: {
     async addRanker(_, { rankerInput: { nickname, gender, body, squat, bench, dead } }) {
       const newRanker = new Ranker({
