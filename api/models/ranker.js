@@ -8,6 +8,7 @@ const { model, Schema } = pkg;
 const rankerSchema = new Schema({
   tier: String,
   nickname: String,
+  gender: String,
   body: Number,
   squat: Number,
   bench: Number,

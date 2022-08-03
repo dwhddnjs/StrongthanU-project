@@ -4,6 +4,16 @@ const typeDefs = gql`
   type Ranker {
     tier: String!
     nickname: String!
+    gender: String!
+    body: Int!
+    squat: Int!
+    bench: Int!
+    dead: Int!
+  }
+
+  input RankerInput {
+    nickname: String!
+    gender: String!
     body: Int!
     squat: Int!
     bench: Int!
@@ -12,6 +22,10 @@ const typeDefs = gql`
 
   type Query {
     allRankers: [Ranker!]!
+  }
+
+  type Mutation {
+    addRanker(rankerInput: RankerInput): Ranker!
   }
 `;
 
