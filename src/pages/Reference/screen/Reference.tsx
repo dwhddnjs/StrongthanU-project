@@ -24,7 +24,6 @@ const ReferenceContainer = styled.div``;
 
 const ImgWrapper = styled.div`
   display: flex;
-  /* border: 1px solid; */
   justify-content: center;
 `;
 

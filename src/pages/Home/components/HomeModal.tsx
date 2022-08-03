@@ -134,7 +134,6 @@ const ModalCloseBtn = styled.div`
   top: 0;
   right: 0;
   font-size: 22px;
-  /* border: 1px solid; */
   color: #333333;
   padding: 3px;
 `;

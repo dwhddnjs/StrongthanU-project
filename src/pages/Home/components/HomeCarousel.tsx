@@ -124,7 +124,6 @@ const DotWrapper = styled.div`
   display: flex;
   bottom: 20px;
   left: 310px;
-  /* border: 1px solid; */
   z-index: 10000;
 `;
 

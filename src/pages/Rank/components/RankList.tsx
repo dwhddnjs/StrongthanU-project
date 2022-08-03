@@ -56,11 +56,8 @@ const RankListItem = styled.div`
   color: #333333;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid; */
 
   &:nth-child(3) {
-    /* border: 1px solid; */
-    /* margin-left: 20px; */
     padding-left: 20px;
   }
 `;

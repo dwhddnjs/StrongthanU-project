@@ -35,7 +35,6 @@ const TierTable = () => {
 export default TierTable;
 
 const TableContainer = styled.div`
-  /* border: 1px solid; */
   display: flex;
 
   margin-top: 40px;
@@ -48,7 +47,6 @@ const TableBody = styled.div`
 
 const TableRow = styled.div`
   display: flex;
-  /* border: 1px solid; */
   background-color: #3eb489;
   justify-content: center;
   color: #fff;

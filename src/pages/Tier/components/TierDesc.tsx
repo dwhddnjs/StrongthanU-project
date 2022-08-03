@@ -40,5 +40,4 @@ const TierDescContainer = styled.div`
 
 const TierInfo = styled.p`
   width: 460px;
-  /* border: 1px solid; */
 `;
