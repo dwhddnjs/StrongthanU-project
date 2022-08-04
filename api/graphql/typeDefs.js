@@ -21,7 +21,8 @@ const typeDefs = gql`
 
   type Query {
     allRankers: [Ranker!]!
-    filterGenderRankers(gender: String): [Ranker!]!
+    manRankers: [Ranker!]!
+    womanRankers: [Ranker!]!
   }
 
   type Mutation {

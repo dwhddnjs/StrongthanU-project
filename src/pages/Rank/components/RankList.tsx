@@ -8,31 +8,25 @@ type totalType = {
 
 interface RankListTypes {
   ranker: {
-    id: number;
-    tier: string;
     nickname: string;
     body: number;
     squat: number;
     bench: number;
     dead: number;
-    total: totalType;
+    // total: totalType;
   };
 }
 
 const RankList: FC<RankListTypes> = ({ ranker }) => {
   return (
     <RankItemContainer>
-      <RankListItem>{ranker.id}</RankListItem>
+      {/* <RankListItem>{ranker.id}</RankListItem> */}
       <RankListItem>{ranker.nickname}</RankListItem>
-      <RankListItem>
-        <img src={ranker.tier} alt="" width={40} />
-      </RankListItem>
+      <RankListItem>{/* <img src={ranker.tier} alt="" width={40} /> */}</RankListItem>
       <RankListItem>{ranker.squat}</RankListItem>
       <RankListItem>{ranker.bench}</RankListItem>
       <RankListItem>{ranker.dead}</RankListItem>
-      <RankListItem>
-        {ranker.total.weight} / {ranker.total.multiple}배
-      </RankListItem>
+      <RankListItem>{/* {ranker.total.weight} / {ranker.total.multiple}배 */}</RankListItem>
     </RankItemContainer>
   );
 };

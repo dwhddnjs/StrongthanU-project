@@ -47,7 +47,14 @@ const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
   };
 
   const handleOnSubmit = () => {
-    if (data.body.length === 0 || data.squat.length === 0 || data.bench.length === 0 || data.dead.length === 0) {
+    if (
+      data.body.length === 0 ||
+      data.squat.length === 0 ||
+      data.bench.length === 0 ||
+      data.dead.length === 0 ||
+      data.gender.length === 0 ||
+      data.nickname.length === 0
+    ) {
       alert('양식의 맞게 작성해주세요.');
       return;
     }
@@ -125,6 +132,7 @@ const ModalContainer = styled.div`
 
 const ModalLayout = styled.div`
   background-color: #ffffff;
+  border: 1px solid;
   color: #333333;
 `;
 

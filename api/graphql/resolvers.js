@@ -5,8 +5,11 @@ const resolver = {
     async allRankers() {
       return await Ranker.find();
     },
-    async filterGenderRankers(_, { gender }) {
-      return await (await Ranker.find()).filter((el) => el.gender === gender);
+    async manRankers() {
+      return await (await Ranker.find()).filter((el) => el.gender === '남자');
+    },
+    async womanRankers() {
+      return await (await Ranker.find()).filter((el) => el.gender === '여자');
     },
   },
 

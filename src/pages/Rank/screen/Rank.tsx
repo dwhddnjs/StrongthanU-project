@@ -11,8 +11,16 @@ import d from '../../../images/d.png';
 import c from '../../../images/c.png';
 
 const RANkERS = gql`
-  query AllRankers {
-    allRankers {
+  query FilterGenderRankers {
+    womanRankers {
+      nickname
+      gender
+      body
+      squat
+      dead
+      bench
+    }
+    manRankers {
       nickname
       gender
       body
@@ -23,102 +31,10 @@ const RANkERS = gql`
   }
 `;
 
-const rankData = [
-  {
-    gender: 'man',
-    rankers: [
-      {
-        id: 1,
-        tier: d,
-        nickname: '이종원',
-        body: 70,
-        squat: 160,
-        bench: 115,
-        dead: 195,
-        total: {
-          weight: 500,
-          multiple: 8,
-        },
-      },
-      {
-        id: 2,
-        tier: g,
-        nickname: '이종투',
-        body: 60,
-        squat: 170,
-        bench: 125,
-        dead: 115,
-        total: {
-          weight: 500,
-          multiple: 8,
-        },
-      },
-      {
-        id: 3,
-        tier: p,
-        nickname: '이종삼',
-        body: 80,
-        squat: 120,
-        bench: 105,
-        dead: 205,
-        total: {
-          weight: 500,
-          multiple: 8,
-        },
-      },
-    ],
-  },
-  {
-    gender: 'woman',
-    rankers: [
-      {
-        id: 1,
-        tier: d,
-        nickname: '이이구',
-        body: 40,
-        squat: 100,
-        bench: 35,
-        dead: 115,
-        total: {
-          weight: 500,
-          multiple: 8,
-        },
-      },
-      {
-        id: 2,
-        tier: c,
-        nickname: '팔감아',
-        body: 50,
-        squat: 110,
-        bench: 45,
-        dead: 135,
-        total: {
-          weight: 500,
-          multiple: 8,
-        },
-      },
-      {
-        id: 3,
-        tier: g,
-        nickname: '치키넝',
-        body: 45,
-        squat: 100,
-        bench: 55,
-        dead: 135,
-        total: {
-          weight: 500,
-          multiple: 8,
-        },
-      },
-    ],
-  },
-];
-
 const Rank = () => {
+  const [gender, setGender] = useState('man' || 'woman');
   const { data, loading, error } = useQuery(RANkERS);
   console.log('data: ', data);
-
-  const [gender, setGender] = useState('man' || 'woman');
 
   const handleGenderTab = (data: string) => {
     if (data === 'man') {
@@ -135,17 +51,18 @@ const Rank = () => {
       <TabTableWrapper>
         <RankTab onGenderTab={handleGenderTab} />
         <RankHeader />
-        {rankData.map(
-          (data) =>
-            data.gender === gender && (
-              <>
-                {data.rankers.map((ranker) => (
-                  <>
-                    <RankList ranker={ranker} />
-                  </>
-                ))}
-              </>
-            ),
+        {gender === 'woman' ? (
+          <>
+            {data?.womanRankers?.map((ranker: any) => (
+              <RankList ranker={ranker} key={ranker.length} />
+            ))}
+          </>
+        ) : (
+          <>
+            {data?.manRankers?.map((ranker: any) => (
+              <RankList ranker={ranker} key={ranker.length} />
+            ))}
+          </>
         )}
       </TabTableWrapper>
     </RankContainer>
