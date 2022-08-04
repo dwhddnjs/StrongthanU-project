@@ -53,14 +53,14 @@ const Rank = () => {
         <RankHeader />
         {gender === 'woman' ? (
           <>
-            {data?.womanRankers?.map((ranker: any) => (
-              <RankList ranker={ranker} key={ranker.length} />
+            {data?.womanRankers?.map((ranker: any, index: number) => (
+              <RankList ranker={ranker} order={index} key={index} />
             ))}
           </>
         ) : (
           <>
-            {data?.manRankers?.map((ranker: any) => (
-              <RankList ranker={ranker} key={ranker.length} />
+            {data?.manRankers?.map((ranker: any, index: number) => (
+              <RankList ranker={ranker} order={index} key={index} />
             ))}
           </>
         )}

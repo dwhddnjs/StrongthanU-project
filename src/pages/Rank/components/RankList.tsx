@@ -1,32 +1,35 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-
-type totalType = {
-  weight: number;
-  multiple: number;
-};
+import { getMultiple, getTierInfo } from '../../../util';
 
 interface RankListTypes {
+  order: number;
   ranker: {
     nickname: string;
     body: number;
     squat: number;
     bench: number;
     dead: number;
-    // total: totalType;
   };
 }
 
-const RankList: FC<RankListTypes> = ({ ranker }) => {
+const RankList: FC<RankListTypes> = ({ ranker, order }) => {
+  const totalWeight = ranker.squat + ranker.bench + ranker.dead;
+  const deadMultiple = getMultiple(ranker.dead, ranker.body);
+  const tierData = getTierInfo(deadMultiple);
   return (
     <RankItemContainer>
-      {/* <RankListItem>{ranker.id}</RankListItem> */}
+      <RankListItem>{order + 1}</RankListItem>
       <RankListItem>{ranker.nickname}</RankListItem>
-      <RankListItem>{/* <img src={ranker.tier} alt="" width={40} /> */}</RankListItem>
+      <RankListItem>
+        <img src={tierData.img} alt="" width={40} />
+      </RankListItem>
       <RankListItem>{ranker.squat}</RankListItem>
       <RankListItem>{ranker.bench}</RankListItem>
       <RankListItem>{ranker.dead}</RankListItem>
-      <RankListItem>{/* {ranker.total.weight} / {ranker.total.multiple}배 */}</RankListItem>
+      <RankListItem>
+        {totalWeight} / {Math.floor(getMultiple(totalWeight, ranker.body))}배
+      </RankListItem>
     </RankItemContainer>
   );
 };
