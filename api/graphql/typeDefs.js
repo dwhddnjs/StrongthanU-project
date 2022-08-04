@@ -3,16 +3,16 @@ import { gql } from 'apollo-server';
 const typeDefs = gql`
   type Ranker {
     nickname: String!
+    gender: String
     body: Int!
     squat: Int!
     bench: Int!
     dead: Int!
-    gender: String
   }
 
   input RankerInput {
-    gender: String!
     nickname: String!
+    gender: String!
     body: Int!
     squat: Int!
     bench: Int!

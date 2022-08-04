@@ -2,14 +2,32 @@ import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import { useNavigate } from 'react-router';
+import { gql, useMutation } from '@apollo/client';
 
 interface HomeModalProps {
   onCloseForm: () => void;
 }
 
+const ADD_RANKER = gql`
+  mutation AddRanker($rankerInput: RankerInput) {
+    addRanker(rankerInput: $rankerInput) {
+      nickname
+      body
+      squat
+      bench
+      dead
+      gender
+    }
+  }
+`;
+
 const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
+  const [addRanker, { error, loading }] = useMutation(ADD_RANKER);
+
   const navigate = useNavigate();
   const [data, setData] = useState({
+    nickname: '',
+    gender: '',
     body: '',
     squat: '',
     bench: '',
@@ -33,7 +51,21 @@ const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
       alert('양식의 맞게 작성해주세요.');
       return;
     }
-    localStorage.setItem('data', JSON.stringify(data));
+
+    const parseData = {
+      ...data,
+      body: parseInt(data.body),
+      bench: parseInt(data.bench),
+      dead: parseInt(data.dead),
+      squat: parseInt(data.squat),
+    };
+
+    addRanker({
+      variables: {
+        rankerInput: parseData,
+      },
+    });
+    localStorage.setItem('data', JSON.stringify(parseData));
     navigate('/tier');
   };
 
@@ -45,6 +77,14 @@ const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
             <MdClose />
           </ModalCloseBtn>
           <ModalDesc>무게를 kg 단위로 입력해주세요.</ModalDesc>
+          <TitleInputWrapper>
+            <ModalTitle>Nickname</ModalTitle>
+            <ModalInput onChange={handleOnChange} value={data.nickname} name="nickname" />
+          </TitleInputWrapper>
+          <TitleInputWrapper>
+            <ModalTitle>Gender</ModalTitle>
+            <ModalInput onChange={handleOnChange} value={data.gender} name="gender" />
+          </TitleInputWrapper>
           <TitleInputWrapper>
             <ModalTitle>Body Weight</ModalTitle>
             <ModalInput onChange={handleOnChange} value={data.body} name="body" />

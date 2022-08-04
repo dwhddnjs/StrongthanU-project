@@ -11,7 +11,7 @@ import d from '../../../images/d.png';
 import c from '../../../images/c.png';
 
 const RANkERS = gql`
-  query {
+  query AllRankers {
     allRankers {
       nickname
       gender
