@@ -1,15 +1,34 @@
 import Ranker from '../models/ranker';
+import { getMultiple } from '../util';
 
 const resolver = {
   Query: {
     async allRankers() {
       return await Ranker.find();
     },
+
     async manRankers() {
-      return await (await Ranker.find()).filter((el) => el.gender === '남자');
+      return await (
+        await Ranker.find()
+      )
+        .filter((el) => el.gender === '남자')
+        .sort((a, b) => {
+          const aTotalWeight = a.bench + a.dead + a.squat;
+          const bTotalWeight = b.bench + b.dead + b.squat;
+          return getMultiple(bTotalWeight, b.body) - getMultiple(aTotalWeight, a.body);
+        });
     },
+
     async womanRankers() {
-      return await (await Ranker.find()).filter((el) => el.gender === '여자');
+      return await (
+        await Ranker.find()
+      )
+        .filter((el) => el.gender === '여자')
+        .sort((a, b) => {
+          const aTotalWeight = a.bench + a.dead + a.squat;
+          const bTotalWeight = b.bench + b.dead + b.squat;
+          return getMultiple(bTotalWeight, b.body) - getMultiple(aTotalWeight, a.body);
+        });
     },
   },
 
