@@ -77,7 +77,7 @@ const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
         rankerInput: parseData,
       },
     });
-    localStorage.setItem('inputValue', JSON.stringify(parseData));
+    localStorage.setItem('data', JSON.stringify(parseData));
     navigate('/tier');
   };
 
