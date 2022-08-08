@@ -25,7 +25,6 @@ const RankHeaderContainer = styled.div`
 
 const RankList = styled.div`
   display: flex;
-  border: 1px solid;
   justify-content: space-between;
   margin: 0 100px 0 100px;
   padding: 8px 80px 8px 80px;

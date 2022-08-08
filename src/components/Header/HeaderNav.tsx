@@ -9,8 +9,8 @@ const HeaderNav = () => {
       <NavItems>
         <Link to="/rank">Rank</Link>
       </NavItems>
-      <NavItems>
-        <Link to="/program">Program</Link>
+      <NavItems onClick={() => alert('서비스 준비중입니다.')}>
+        <Link to="">Program</Link>
       </NavItems>
       <NavItems>
         <Link to="/reference">Reference</Link>

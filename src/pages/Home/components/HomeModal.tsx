@@ -2,30 +2,17 @@ import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import { useNavigate } from 'react-router';
-import { gql, useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_RANKER } from '../../../graphql/mutation';
+import { ALL_RANKERS } from '../../../graphql/query';
 
 interface HomeModalProps {
   onCloseForm: () => void;
 }
 
-const ADD_RANKER = gql`
-  mutation AddRanker($rankerInput: RankerInput) {
-    addRanker(rankerInput: $rankerInput) {
-      nickname
-      body
-      squat
-      bench
-      dead
-      gender
-    }
-  }
-`;
-
 const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
-  const [addRanker, { error, loading }] = useMutation(ADD_RANKER);
-
   const navigate = useNavigate();
-  const [data, setData] = useState({
+  const [inputValue, setInputValue] = useState({
     nickname: '',
     gender: '',
     body: '',
@@ -34,37 +21,55 @@ const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
     dead: '',
   });
 
+  const { data } = useQuery(ALL_RANKERS);
+  const [addRanker] = useMutation(ADD_RANKER, {
+    update(cache, { data: { addRanker } }) {
+      const {
+        data: { allRankers },
+      } = cache.readQuery({
+        query: ALL_RANKERS,
+      }) as any;
+
+      cache.writeQuery({
+        query: ALL_RANKERS,
+        data: {
+          allRankers: [...allRankers, addRanker],
+        },
+      });
+    },
+  });
+
   const handleCloseForm = () => {
     onCloseForm();
   };
 
   const handleOnChange = (e: any) => {
     const { name, value } = e.target;
-    setData({
-      ...data,
+    setInputValue({
+      ...inputValue,
       [name]: value,
     });
   };
 
   const handleOnSubmit = () => {
     if (
-      data.body.length === 0 ||
-      data.squat.length === 0 ||
-      data.bench.length === 0 ||
-      data.dead.length === 0 ||
-      data.gender.length === 0 ||
-      data.nickname.length === 0
+      inputValue.body.length === 0 ||
+      inputValue.squat.length === 0 ||
+      inputValue.bench.length === 0 ||
+      inputValue.dead.length === 0 ||
+      inputValue.gender.length === 0 ||
+      inputValue.nickname.length === 0
     ) {
       alert('양식의 맞게 작성해주세요.');
       return;
     }
 
     const parseData = {
-      ...data,
-      body: parseInt(data.body),
-      bench: parseInt(data.bench),
-      dead: parseInt(data.dead),
-      squat: parseInt(data.squat),
+      ...inputValue,
+      body: parseInt(inputValue.body),
+      bench: parseInt(inputValue.bench),
+      dead: parseInt(inputValue.dead),
+      squat: parseInt(inputValue.squat),
     };
 
     addRanker({
@@ -72,7 +77,7 @@ const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
         rankerInput: parseData,
       },
     });
-    localStorage.setItem('data', JSON.stringify(parseData));
+    localStorage.setItem('inputValue', JSON.stringify(parseData));
     navigate('/tier');
   };
 
@@ -86,27 +91,27 @@ const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
           <ModalDesc>무게를 kg 단위로 입력해주세요.</ModalDesc>
           <TitleInputWrapper>
             <ModalTitle>Nickname</ModalTitle>
-            <ModalInput onChange={handleOnChange} value={data.nickname} name="nickname" />
+            <ModalInput onChange={handleOnChange} value={inputValue.nickname} name="nickname" />
           </TitleInputWrapper>
           <TitleInputWrapper>
             <ModalTitle>Gender</ModalTitle>
-            <ModalInput onChange={handleOnChange} value={data.gender} name="gender" />
+            <ModalInput onChange={handleOnChange} value={inputValue.gender} name="gender" />
           </TitleInputWrapper>
           <TitleInputWrapper>
             <ModalTitle>Body Weight</ModalTitle>
-            <ModalInput onChange={handleOnChange} value={data.body} name="body" />
+            <ModalInput onChange={handleOnChange} value={inputValue.body} name="body" />
           </TitleInputWrapper>
           <TitleInputWrapper>
             <ModalTitle>Squat</ModalTitle>
-            <ModalInput onChange={handleOnChange} value={data.squat} name="squat" />
+            <ModalInput onChange={handleOnChange} value={inputValue.squat} name="squat" />
           </TitleInputWrapper>
           <TitleInputWrapper>
             <ModalTitle>BenchPress</ModalTitle>
-            <ModalInput onChange={handleOnChange} value={data.bench} name="bench" />
+            <ModalInput onChange={handleOnChange} value={inputValue.bench} name="bench" />
           </TitleInputWrapper>
           <TitleInputWrapper>
             <ModalTitle>DeadLift</ModalTitle>
-            <ModalInput onChange={handleOnChange} value={data.dead} name="dead" />
+            <ModalInput onChange={handleOnChange} value={inputValue.dead} name="dead" />
           </TitleInputWrapper>
           <ModalMeasureBtn onClick={handleOnSubmit}>측정하기</ModalMeasureBtn>
         </ModalForm>
@@ -132,7 +137,6 @@ const ModalContainer = styled.div`
 
 const ModalLayout = styled.div`
   background-color: #ffffff;
-  border: 1px solid;
   color: #333333;
 `;
 

@@ -2,39 +2,13 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Header } from '../../../components/Header';
 import { RankHeader, RankList, RankTab } from '../components';
-import { useQuery, gql } from '@apollo/client';
-import b from '../../../images/b.png';
-import s from '../../../images/s.png';
-import g from '../../../images/g.png';
-import p from '../../../images/p.png';
-import d from '../../../images/d.png';
-import c from '../../../images/c.png';
-
-const RANkERS = gql`
-  query FilterGenderRankers {
-    womanRankers {
-      nickname
-      gender
-      body
-      squat
-      dead
-      bench
-    }
-    manRankers {
-      nickname
-      gender
-      body
-      squat
-      bench
-      dead
-    }
-  }
-`;
+import { useQuery } from '@apollo/client';
+import { FILTER_GENDER_RANKERS } from '../../../graphql/query';
+import { RankerTypes } from '../../../types/RankerTypes';
 
 const Rank = () => {
   const [gender, setGender] = useState('man' || 'woman');
-  const { data, loading, error } = useQuery(RANkERS);
-  console.log('data: ', data);
+  const { data } = useQuery(FILTER_GENDER_RANKERS);
 
   const handleGenderTab = (data: string) => {
     if (data === 'man') {
@@ -51,19 +25,21 @@ const Rank = () => {
       <TabTableWrapper>
         <RankTab onGenderTab={handleGenderTab} />
         <RankHeader />
-        {gender === 'woman' ? (
-          <>
-            {data?.womanRankers?.map((ranker: any, index: number) => (
-              <RankList ranker={ranker} order={index} key={index} />
-            ))}
-          </>
-        ) : (
-          <>
-            {data?.manRankers?.map((ranker: any, index: number) => (
-              <RankList ranker={ranker} order={index} key={index} />
-            ))}
-          </>
-        )}
+        <RankListWrapper>
+          {gender === 'woman' ? (
+            <>
+              {data?.womanRankers?.map((ranker: RankerTypes, index: number) => (
+                <RankList ranker={ranker} order={index} key={index} />
+              ))}
+            </>
+          ) : (
+            <>
+              {data?.manRankers?.map((ranker: RankerTypes, index: number) => (
+                <RankList ranker={ranker} order={index} key={index} />
+              ))}
+            </>
+          )}
+        </RankListWrapper>
       </TabTableWrapper>
     </RankContainer>
   );
@@ -72,6 +48,12 @@ const Rank = () => {
 export default Rank;
 
 const RankContainer = styled.div``;
+
+const RankListWrapper = styled.div`
+  height: 600px;
+  overflow-y: scroll;
+  margin: 0px 80px 5px 80px;
+`;
 
 const RankTitle = styled.span`
   margin-left: 200px;
