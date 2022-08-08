@@ -34,9 +34,9 @@
 ### 5.2 UI
 <img width="1703" alt="스크린샷 2022-08-08 오후 8 08 34" src="https://user-images.githubusercontent.com/67595495/183409511-043f152b-d833-4709-8ba4-3d60ceb99673.png">
 
-![Uploading 스크린샷 2022-08-08 오후 8.08.52.png…]()
+<img width="1695" alt="스크린샷 2022-08-08 오후 8 08 52" src="https://user-images.githubusercontent.com/67595495/183411857-6cc35fbf-e84a-4aa9-9039-aa4255c053e9.png">
 
-![Uploading 스크린샷 2022-08-08 오후 8.25.30.png…]()
+<img width="1696" alt="스크린샷 2022-08-08 오후 8 25 30" src="https://user-images.githubusercontent.com/67595495/183412066-9a3077c2-d9c1-4375-a6ce-e913f29e3d3c.png">
 
 
 <img width="1705" alt="스크린샷 2022-08-08 오후 8 24 45" src="https://user-images.githubusercontent.com/67595495/183409611-6aeadfc6-f40d-4a6d-8c12-c03289329fe8.png">
