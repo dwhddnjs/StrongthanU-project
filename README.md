@@ -20,7 +20,9 @@
 ## 3. 개인 프로젝트
 - 기획 : 이종원
 - Front : React.js, Styled-components, Apollo-client, Typescript
-- Back : Apollo-server, mongoDB, Graphql, Javascript
+- Back : Apollo-server, mongoDB, Graphql, Javascript, Heroku
+### 3.1 API Repo
+- https://github.com/dwhddnjs/StrongthanU-api
 
 ## 4. 개발 일정
 - 메인 프로젝트 기간 : 2022.07 - 2022.08.07
