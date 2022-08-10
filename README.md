@@ -12,10 +12,8 @@
 - 간단하고 직관적인 UI를 통해 쉽게 접근 할 수 있습니다
 
 ## 2. 배포
-### 2.1 배포 일정
-- 예정
-### 2.2 배포 URL
-- 예정
+### 2.1 배포 URL
+- 임시:http://strongthanu.s3-website.ap-northeast-2.amazonaws.com
 
 ## 3. 개인 프로젝트
 - 기획 : 이종원
