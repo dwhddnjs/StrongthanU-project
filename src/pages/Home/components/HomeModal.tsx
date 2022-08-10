@@ -21,7 +21,6 @@ const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
     dead: '',
   });
 
-  const { data } = useQuery(ALL_RANKERS);
   const [addRanker] = useMutation(ADD_RANKER, {
     update(cache, { data: { addRanker } }) {
       const {

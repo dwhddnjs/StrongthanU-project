@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Header } from '../../../components/Header';
 import styled from 'styled-components';
-
 import { HomeCarousel, HomeInfo, HomeModal } from '../components';
+import { ALL_RANKERS, FILTER_GENDER_RANKERS } from '../../../graphql/query';
+import { useQuery } from '@apollo/client';
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { data } = useQuery(ALL_RANKERS);
 
   const handleOpenForm = () => {
     setIsOpen(true);
