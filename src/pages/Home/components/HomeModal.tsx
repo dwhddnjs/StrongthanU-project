@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import { useNavigate } from 'react-router';
 import { useMutation, useQuery } from '@apollo/client';
@@ -41,6 +41,16 @@ const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
   const handleCloseForm = () => {
     onCloseForm();
   };
+  const [isSelected, setIsSelected] = useState('');
+  const handleGenderBtn = (gender: string) => {
+    if (gender === 'woman') {
+      setInputValue({ ...inputValue, gender: '여자' });
+      setIsSelected('woman');
+    } else if (gender === 'man') {
+      setInputValue({ ...inputValue, gender: '남자' });
+      setIsSelected('man');
+    }
+  };
 
   const handleOnChange = (e: any) => {
     const { name, value } = e.target;
@@ -55,8 +65,8 @@ const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
       inputValue.body.length === 0 ||
       inputValue.squat.length === 0 ||
       inputValue.bench.length === 0 ||
-      inputValue.dead.length === 0 ||
       inputValue.gender.length === 0 ||
+      inputValue.dead.length === 0 ||
       inputValue.nickname.length === 0
     ) {
       alert('양식의 맞게 작성해주세요.');
@@ -94,7 +104,14 @@ const HomeModal: FC<HomeModalProps> = ({ onCloseForm }) => {
           </TitleInputWrapper>
           <TitleInputWrapper>
             <ModalTitle>Gender</ModalTitle>
-            <ModalInput onChange={handleOnChange} value={inputValue.gender} name="gender" />
+            <GenderBtnWrapper>
+              <GenderBtn onClick={() => handleGenderBtn('man')} selected={isSelected === 'man'}>
+                남자
+              </GenderBtn>
+              <GenderBtn onClick={() => handleGenderBtn('woman')} selected={isSelected === 'woman'}>
+                여자
+              </GenderBtn>
+            </GenderBtnWrapper>
           </TitleInputWrapper>
           <TitleInputWrapper>
             <ModalTitle>Body Weight</ModalTitle>
@@ -200,4 +217,22 @@ const ModalMeasureBtn = styled.button`
   color: #ffffff;
   background-color: #3eb489;
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+`;
+
+const GenderBtn = styled.span<{ selected: boolean }>`
+  cursor: pointer;
+  padding: 5px 20px 5px 20px;
+  font-weight: 800;
+  border-radius: 10px;
+  font-size: 14px;
+
+  background-color: ${(props) => (props.selected ? '#009dd8' : '#ffffff')};
+  color: ${(props) => (props.selected ? '#ffffff' : '#333333')};
+  border: ${(props) => (props.selected ? 'none' : '1.5px solid #c4c4c4')};
+`;
+
+const GenderBtnWrapper = styled.div`
+  display: flex;
+  width: 155px;
+  justify-content: space-between;
 `;
