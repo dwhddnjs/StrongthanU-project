@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import { useNavigate } from 'react-router';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { ADD_RANKER } from '../../../graphql/mutation';
 import { ALL_RANKERS } from '../../../graphql/query';
 
