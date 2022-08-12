@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Header } from '../../../components/Header';
 import { ReferenceImg } from '../components';
 import man1rm from '../../../images/man1rm.jpeg';
 import wo1rm from '../../../images/wo1rm.jpeg';
 
-const Reference = () => {
+const Reference: FC = () => {
   return (
     <ReferenceContainer>
       <Header />

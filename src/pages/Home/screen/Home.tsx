@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Header } from '../../../components/Header';
 import styled from 'styled-components';
 import { HomeCarousel, HomeInfo, HomeModal } from '../components';
 import { ALL_RANKERS } from '../../../graphql/query';
 import { useQuery } from '@apollo/client';
 
-const Home = () => {
+const Home: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { data } = useQuery(ALL_RANKERS);
 

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import HeaderLogo from './HeaderLogo';
 import HeaderNav from './HeaderNav';
 
-const Header = () => {
+const Header: FC = () => {
   return (
     <HeaderContainer>
       <HeaderLogo />

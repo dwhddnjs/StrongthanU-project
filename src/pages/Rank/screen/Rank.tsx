@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import { Header } from '../../../components/Header';
 import { RankHeader, RankList, RankTab } from '../components';
@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/client';
 import { FILTER_GENDER_RANKERS } from '../../../graphql/query';
 import { RankerTypes } from '../../../types/RankerTypes';
 
-const Rank = () => {
+const Rank: FC = () => {
   const [gender, setGender] = useState('man' || 'woman');
   const { data } = useQuery(FILTER_GENDER_RANKERS);
 

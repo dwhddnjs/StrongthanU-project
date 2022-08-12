@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Header } from '../../../components/Header';
 import styled from 'styled-components';
 import { TierDesc, TierImg } from '../components';
 import { getTierInfo, getMultiple } from '../../../util';
 
-const Tier = () => {
+const Tier: FC = () => {
   const localData = JSON.parse(localStorage.getItem('data') as string);
   const multipleDead = getMultiple(localData.dead, localData.body);
   const currentTier = getTierInfo(multipleDead);
